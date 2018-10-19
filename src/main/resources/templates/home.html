@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home Page</title>
+	
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<script th:src="@{/js/bootsrap.min.js}"></script>	
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+	
+	
+	<div class="container-fluid"></div>
+	<h2>Sistem Informasi Kepegawaian</h2>
+	<h4>Selamat datang di Sistem Informasi Kepegawaian</h4>
+	
+	
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					Lihat Data Pegawai Berdasarkan NIP
+				</div>
+				<form th:action="@{/pegawai}" method="GET">
+					<div class="card-body">
+						<label for="nip" >Masukkan Nomor Induk Pegawai</label>
+						<input type="text" name="nip" class="form-control" />
+						</br>
+						<button type="submit" class="btn btn-primary">Lihat</button>
+						
+						
+					</div>				
+				</form>
+					
+			</div>
+			</br>
+			<div class="card">
+				<div class="card-header">
+					Lihat Detail Jabatan
+				</div>
+				<form th:action="@{/jabatan/view}" method="GET" >
+					<div class="card-body">
+						<label for="idJabatan" >Pilih jabatan</label>
+						
+						
+						<select name="idJabatan" >
+							<option th:value="${jabatan.id}" th:text="${jabatan.nama}" th:each="jabatan : ${listJabatan}"></option>
+						</select>
+						
+						</br>
+						
+						<button type="submit" class="btn btn-primary">Lihat</button>
+						
+						
+					</div>				
+				</form>
+					
+			</div>
+			</br>
+			<div class="card">
+				<div class="card-header">
+					Lihat Pegawai Termuda dan Tertua
+				</div>
+				<form th:action="@{/pegawai/termuda-tertua}" method="GET" >
+					<div class="card-body">
+						<label for="idInstansi" >Pilih instansi</label>
+						
+						
+						<select name="idInstansi" >
+							<option th:value="${pegawai.instansi.id}" th:text="${pegawai.instansi.nama}+' - '+${pegawai.instansi.provinsi.nama}" th:each="pegawai : ${listPegawai}"></option>
+						</select>
+						
+						
+						
+						<button type="submit" class="btn btn-primary">Lihat</button>
+						
+						
+					</div>				
+				</form>
+					
+			</div>
+				
+		</div>
+	
+		
+	</div>
+	
+	
+	
+	
+	
+
+</body>
+
+
+</html>

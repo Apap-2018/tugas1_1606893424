@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Ubah Pegawai</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<script th:src="@{/js/bootsrap.min.js}"></script>	
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>	
+	
+	
+	
+	<form th:action="@{/pegawai/ubah}" th:object="${pegawai}" method="POST">
+		
+		<input type="hidden" name="id" th:value=${pegawai.id}  />	
+		<div class="card-header">
+			<h2>Ubah Pegawai</h2>
+			<table>
+			<tr height="50">
+				
+				<td width="250">
+				Nama
+				</td>
+				<td> 
+				<input type="text" name="nama" th:value=${pegawai.nama}  />
+				</td>
+							
+			</tr>
+			<tr height="50">
+				
+				<td>
+				Tempat Lahir
+				</td>
+				<td> 
+				<input type="text" name="tempat_lahir" th:value=${pegawai.tempat_lahir} />
+				</td>
+							
+			</tr>
+			<tr height="50">
+				
+				<td>
+				Tanggal Lahir
+				</td>
+				<td> 
+				<input type="date" name="tanggal_lahir" th:value=${pegawai.tanggal_lahir} />
+				</td>
+							
+			</tr>
+			
+			<tr height="50">
+				
+				<td>
+				Tahun Masuk
+				</td>
+				<td> 
+				<input type="number" th:max="2018" name="tahun_masuk" th:value=${pegawai.tahun_masuk} />
+				</td>
+							
+			</tr>
+			
+			<tr height="50">				
+						<td>Provinsi</td>
+							
+						<td>			
+						<select name="idProvinsi" >
+							<option th:value="${pegawai.instansi.provinsi.id}" th:text="${provinsi.nama}" th:each="provinsi : ${listProvinsi}"></option>
+						</select>
+						</td>						
+
+							
+			</tr>
+			
+			<tr height="50">				
+							<td>Nama Instansi</td>
+						<td>			
+						<select name="idInstansi" >
+							<option th:value="${pegawai.instansi.id}" th:text="${instansi.nama}" th:each="instansi : ${listInstansi}"></option>
+						</select>
+						</td>				
+
+							
+			</tr>
+			
+			<tr height="50">				
+							<td>Jabatan</td>
+						<td>			
+						<select name="idjabatan" >
+							<option th:value="${jabatan.id}" th:text="${jabatan.nama}" th:each="jabatan : ${listJabatan}"></option>
+						</select>
+						</td>				
+
+							
+			</tr>
+			
+				
+			
+			</table>
+			
+			
+		<button type="submit">Simpan</button>
+		</div>	
+	
+	</form>
+	
+	
+
+</body>
+
+
+</html>

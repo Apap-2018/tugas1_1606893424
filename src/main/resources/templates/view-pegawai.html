@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>View Pegawai</title>
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		<script th:src="@{/js/bootsrap.min.js}"></script>	
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		
+		
+		<h2 th:text="'Lihat Data Pegawai - '+${pegawai.nip}" ></h2>
+		
+		
+		
+		<table>
+			<tr height="50">
+				<td >
+				<h4 th:text="'NIP '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawai.nip}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td width="250">
+				<h4 th:text="'Nama '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawai.nama}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Tempat Lahir '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawai.tempat_lahir}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Tanggal Lahir '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawai.tanggal_lahir}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Tahun Masuk '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawai.tahun_masuk}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Instansi '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawai.instansi.nama} +' - '+${pegawai.instansi.provinsi.nama}" ></h4>
+				</td>			
+			</tr>
+			
+			<tr height="50">
+				<td >
+				<h4 th:text="'Jabatan '" ></h4>
+				</td>
+				<td> 
+				
+				<ul th:each="jabatan : ${pegawai.listJabatan}">
+					<li th:text="${jabatan.nama}"></li> 
+				</ul>
+				</td>			
+			</tr>
+			
+			<tr height="50">
+				<td >
+				<h4 th:text="'Gaji '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="'Rp.'+${gaji}" ></h4>
+				</td>			
+			</tr>
+		
+		</table>
+		
+		<form th:action="@{'/pegawai/ubah'}"  > 
+				<input type="hidden" th:name="nip" th:value="${pegawai.nip}">
+				<button type="submit">Ubah</button> 
+		</form>
+		
+		
+		
+		
+		
+		
+		
+	</body>
+
+
+</html>

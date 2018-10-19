@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>View Pegawai Termuda dan Tertua</title>
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		<script th:src="@{/js/bootsrap.min.js}"></script>	
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		
+		
+				
+		
+		<table>
+		<tr>
+		<td colspan="2"><h2 th:text="'Data Pegawai Termuda'" ></h2>
+		</td>
+		<td colspan="2"><h2 th:text="'Data Pegawai Tertua'" ></h2>
+		</td>
+		
+		</tr>
+			<tr height="50">
+				
+				
+				<td width="250">
+				
+				<h4 th:text="'NIP '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTermuda.nip}" ></h4>
+				</td>
+				
+				<td width="250">
+				<h4 th:text="'NIP '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTertua.nip}" ></h4>
+				</td>
+							
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Nama '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTermuda.nama}" ></h4>
+				</td>
+				<td >
+				<h4 th:text="'Nama '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTertua.nama}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Tempat Lahir '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTermuda.tempat_lahir}" ></h4>
+				</td>
+				<td >
+				<h4 th:text="'Tempat Lahir '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTertua.tempat_lahir}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Tanggal Lahir '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTermuda.tanggal_lahir}" ></h4>
+				</td>
+				<td >
+				<h4 th:text="'Tanggal Lahir '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTertua.tanggal_lahir}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Tahun Masuk '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTermuda.tahun_masuk}" ></h4>
+				</td>
+				<td >
+				<h4 th:text="'Tahun Masuk '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTertua.tahun_masuk}" ></h4>
+				</td>			
+			</tr>
+			<tr height="50">
+				<td >
+				<h4 th:text="'Instansi '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTermuda.instansi.nama} +' - '+${pegawaiTermuda.instansi.provinsi.nama}" ></h4>
+				</td>
+				<td >
+				<h4 th:text="'Instansi '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="${pegawaiTertua.instansi.nama} +' - '+${pegawaiTertua.instansi.provinsi.nama}" ></h4>
+				</td>				
+			</tr>
+			
+			<tr height="50">
+				<td >
+				<h4 th:text="'Jabatan '" ></h4>
+				</td>
+				<td> 
+				
+				<ul th:each="jabatanTermuda : ${pegawaiTermuda.listJabatan}">
+					<li th:text="${jabatanTermuda.nama}"></li> 
+				</ul>
+				</td>
+				<td >
+				<h4 th:text="'Jabatan '" ></h4>
+				</td>
+				<td> 
+				
+				<ul th:each="jabatanTermuda : ${pegawaiTertua.listJabatan}">
+					<li th:text="${jabatanTermuda.nama}"></li> 
+				</ul>
+				</td>				
+			</tr>
+			
+			<tr height="50">
+				<td >
+				<h4 th:text="'Gaji '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="'Rp.'+${gajiTermuda}" ></h4>
+				</td>
+				<td >
+				<h4 th:text="'Gaji '" ></h4>
+				</td>
+				<td> 
+				<h4 th:text="'Rp.'+${gajiTertua}" ></h4>
+				</td>			
+			</tr>
+			<tr>
+			<td colspan="2"><form th:action="@{'/pegawai/ubah/' + ${pegawaiTermuda.id}}"  > 
+				<button type="submit">Ubah</button> 
+				</form>
+			</td>
+			<td colspan="2"><form th:action="@{'/pegawai/ubah/' + ${pegawaiTermuda.id}}"  > 
+				<button type="submit">Ubah</button> 
+				</form>
+			</td>
+			</tr>
+		
+		</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+
+
+</html>

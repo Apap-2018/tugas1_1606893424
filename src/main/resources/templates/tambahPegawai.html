@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Tambah Pegawai</title>
+	
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<script th:src="@{/js/bootsrap.min.js}"></script>
+	
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+
+	
+	
+	<form th:action="@{/pegawai/tambah}" th:object="${pegawai}" method="POST">
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<div class="card-header">
+						
+			<table>
+			<tr height="50">
+				
+				<td width="250">
+				Nama
+				</td>
+				<td> 
+				<input type="text" name="nama" />
+				</td>
+							
+			</tr>
+			<tr height="50">
+				
+				<td>
+				Tempat Lahir
+				</td>
+				<td> 
+				<input type="text" name="tempat_lahir" />
+				</td>
+							
+			</tr>
+			<tr height="50">
+				<td>
+				Tanggal Lahir
+				</td>
+				<td> 
+				<input type="date" name="tanggal_lahir" />
+				</td>
+			</tr>
+			
+			<tr height="50">
+				<td>
+				Tahun Masuk
+				</td>
+				<td> 
+				<input type="date" name="tahun_masuk" />
+				</td>
+			</tr>				
+			
+			</table>
+		<button type="submit">Submit</button>	
+		</div>
+		
+		
+			
+		
+	
+	</form>
+
+</body>
+
+
+</html>
