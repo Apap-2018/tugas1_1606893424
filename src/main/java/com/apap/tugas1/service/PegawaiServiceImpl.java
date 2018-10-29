@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.apap.tugas1.model.JabatanModel;
+
 import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.repository.PegawaiDb;
 
@@ -30,6 +30,8 @@ public class PegawaiServiceImpl implements PegawaiService {
 	@Override
 	public void addPegawai(PegawaiModel pegawai) {
 		// TODO Auto-generated method stub
+		
+		pegawaiDb.save(pegawai);
 		
 	}
 
@@ -91,10 +93,15 @@ public class PegawaiServiceImpl implements PegawaiService {
 		// TODO Auto-generated method stub
 		PegawaiModel updatedPegawai=pegawaiDb.findByNip(pegawai.getNip());
 		
+		
 		updatedPegawai.setNama(pegawai.getNama());
 		updatedPegawai.setTempat_lahir(pegawai.getTempat_lahir());
 		updatedPegawai.setTanggal_lahir(pegawai.getTanggal_lahir());
-		updatedPegawai.setTahun_masuk(pegawai.getTahun_masuk());
+		updatedPegawai.setTahun_masuk(pegawai.getTahun_masuk());		
+		updatedPegawai.setInstansi(pegawai.getInstansi());
+		updatedPegawai.getInstansi().setProvinsi(pegawai.getInstansi().getProvinsi());
+		
+		updatedPegawai.setListJabatan(pegawai.getListJabatan());
 		
 
 		

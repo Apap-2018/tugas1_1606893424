@@ -147,11 +147,13 @@
 				</td>			
 			</tr>
 			<tr>
-			<td colspan="2"><form th:action="@{'/pegawai/ubah/' + ${pegawaiTermuda.id}}"  > 
+			<td colspan="2"><form th:action="@{'/pegawai/ubah' }"  >
+				<input type="hidden" th:name="nip" th:value="${pegawaiTermuda.nip}"> 
 				<button type="submit">Ubah</button> 
 				</form>
 			</td>
-			<td colspan="2"><form th:action="@{'/pegawai/ubah/' + ${pegawaiTermuda.id}}"  > 
+			<td colspan="2"><form th:action="@{'/pegawai/ubah'}"  > 
+			<input type="hidden" th:name="nip" th:value="${pegawaiTertua.nip}"> 
 				<button type="submit">Ubah</button> 
 				</form>
 			</td>

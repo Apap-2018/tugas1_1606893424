@@ -16,6 +16,7 @@
 	<form th:action="@{/pegawai/ubah}" th:object="${pegawai}" method="POST">
 		
 		<input type="hidden" name="id" th:value=${pegawai.id}  />	
+		<input type="hidden" name="nip" th:value=${pegawai.nip}  />	
 		<div class="card-header">
 			<h2>Ubah Pegawai</h2>
 			<table>
@@ -65,8 +66,9 @@
 						<td>Provinsi</td>
 							
 						<td>			
-						<select name="idProvinsi" >
-							<option th:value="${pegawai.instansi.provinsi.id}" th:text="${provinsi.nama}" th:each="provinsi : ${listProvinsi}"></option>
+						<select name="instansi.provinsi" >
+							<option th:text="${pegawai.instansi.provinsi.nama}" th:value="${pegawai.instansi.provinsi.id}" selected="selected" ></option>
+							<option th:value="${provinsi.id}" th:text="${provinsi.nama}" th:each="provinsi : ${listProvinsi}"></option>
 						</select>
 						</td>						
 
@@ -76,8 +78,9 @@
 			<tr height="50">				
 							<td>Nama Instansi</td>
 						<td>			
-						<select name="idInstansi" >
-							<option th:value="${pegawai.instansi.id}" th:text="${instansi.nama}" th:each="instansi : ${listInstansi}"></option>
+						<select name="instansi" >
+							<option th:text="${pegawai.instansi.nama}" th:value="${pegawai.instansi.id}" selected="selected" ></option>
+							<option th:value="${instansi.id}" th:text="${instansi.nama}" th:each="instansi : ${listInstansi}"></option>
 						</select>
 						</td>				
 
@@ -86,26 +89,37 @@
 			
 			<tr height="50">				
 							<td>Jabatan</td>
-						<td>			
-						<select name="idjabatan" >
+						<td id="idJabatan">			
+						<select name="listJabatan" th:each="i: ${#numbers.sequence(1, {counter})}">
+							
+							<option th:text="${pegawai.listJabatan[{i-1}].nama}" th:value="${pegawai.listJabatan[{i-1}].id}" selected="selected" th:if="${i-1}<${initialCounter}"></option>
+							<option th:text="'Pilih jabatan'" disabled="disabled" selected="selected" th:unless="${i-1}<${initialCounter}"></option>
+							
 							<option th:value="${jabatan.id}" th:text="${jabatan.nama}" th:each="jabatan : ${listJabatan}"></option>
 						</select>
-						</td>				
-
+						<input type="hidden" name="initialCounter" th:value=${initialCounter}  />
+						<button type="submit" th:value="${counter}" name="counter">Tambah jabatan lain</button>
 							
+						</td>					
+									
+
+						
 			</tr>
 			
 				
 			
 			</table>
 			
-			
+		
+		
 		<button type="submit">Simpan</button>
 		</div>	
 	
 	</form>
 	
+	<script th:inline="javascript">
 	
+	</script>
 
 </body>
 
